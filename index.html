@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html lang="pl">
+      <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+        $(document).ready(function(){
+          $(".button").click(function(){
+            $(".list").sortable();
+            var toAdd = $("input[name=checkListItem]").val();
+            if(toAdd!=""){
+              $(".list").append('<li><span class="item">' + toAdd + '</span>'+'<input type="checkbox" class="check"></li>');
+              
+            }
+            
+          });
+          
+          $(document).on('click','.item',function(){
+            $(this).parent().remove();
+          });
+        });
+        </script>
+      </head>
+      <body style="text-align: center;">
+        <h2>To Do</h2>
+        <form name="checkListForm">
+          <input type="text" name="checkListItem"/>
+        </form><br>
+        <button class="button">Dodaj</button>
+        <br>
+        <ol class="list"></ol>
+      </body>
+    </html>
